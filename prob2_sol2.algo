@@ -1,0 +1,30 @@
+ALGORITHM sum_overlapping
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+    set1,set2 : ARRAY_OF INTEGER;
+    i,count,sum : INTEGER;
+BEGIN
+    sum:=0;
+    FOR i FROM 0 TO set1.length -1   DO
+        IF (htab.lookup(set1[i]) = true) THEN
+            count:=htab.get(set1[i]);
+            htab.insert(set1[i],count+1);
+        ELSE
+            htab.insert(set1[i],1);
+        END_IF
+        sum:=sum+count*2;
+    END_FOR
+
+    FOR i FROM 0 TO set2.length -1   DO
+        IF (htab.lookup(set2[i]) = true) THEN
+            count:=htab.get(set2[i]);
+            htab.insert(set2[i],count+1);
+        ELSE
+            htab.insert(set2[i],1);
+        END_IF
+        sum:=sum+count*2;
+    END_FOR
+
+    write("Sum of overlapping elements is :",sum);
+
+END

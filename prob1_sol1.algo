@@ -1,0 +1,28 @@
+ALGORITHM sum_distinct
+VAR
+  set1, set2 : ARRAY_OF INTEGER; 
+  sum, i, j : INTEGER;   
+BEGIN
+    sum:=0 ;
+    FOR i FROM 0 TO set1.length-1 DO 
+        REPEAT
+        
+            IF (set1[i]=set2[j]) THEN
+                j:= j+1
+            ELSE
+                sum:=sum+set1[i]
+            END_IF    
+        UNTIL (j<set2.length)
+    END_FOR    
+    FOR j FROM 0 TO set2.length-1 DO 
+        REPEAT
+        
+            IF (set1[j]=set2[i]) THEN
+                i:= i+1
+            ELSE
+                sum:=sum+set1[i]
+            END_IF    
+        UNTIL (j<set1.length)
+    END_FOR 
+    write("the sum of all distinct elements",sum)
+END

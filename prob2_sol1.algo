@@ -1,0 +1,17 @@
+ALGORITHM sum_overlapping
+VAR
+    set1,set2 : ARRAY_OF INTEGER;
+    i, j, sum : INTEGER;
+BEGIN
+    sum:=0;
+    FOR i FROM 0 TO set1.length DO
+        REPEAT
+            IF (set1[i]=set2[j]) THEN
+                sum:=sum+set1[i]*2;
+            ELSE
+                j:=j+1;
+            END_IF
+        UNTIL (j<set2.length)
+    END_FOR
+    write("the sum of overlapping elements",sum)
+END
